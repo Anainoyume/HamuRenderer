@@ -13,7 +13,7 @@ set(IMGUI_SRC
     "include/imgui/imgui_widgets.cpp"
     "include/imgui/imgui_tables.cpp"
     "include/imgui/imgui_demo.cpp"
-    "include/imgui/backends/imgui_impl_dx12.cpp"
+    "include/imgui/backends/imgui_impl_vulkan.cpp"
     "include/imgui/backends/imgui_impl_glfw.cpp"
 )
 set(PROJECT_SRC
@@ -21,45 +21,30 @@ set(PROJECT_SRC
 )
 set(LIB_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 
+# 1. 查找 Vulkan SDK (依赖系统的 VULKAN_SDK 环境变量)
+find_package(Vulkan REQUIRED)
+
 add_executable(RendererApp
     ${PROJECT_SRC}
     ${STB_IMAGE_SRC}
     ${IMGUI_SRC}
 )
 
-# 添加头文件路径
+# 添加头文件和库路径
 target_include_directories(RendererApp PRIVATE
     "include"
-    "src"
-
     "include/imgui"
+    "src"
+)
+
+target_link_directories(RendererApp PRIVATE 
+    "lib"
+    "lib/glfw"
 )
 
 # 连接库
 target_link_libraries(RendererApp PRIVATE
-    # winpthread
     winpthread
-
-    # d3d12 核心库
-    d3d12
-    dxgi
-    dxguid
-
-    # dxc 编译器
-    ${LIB_PATH}/dxc/dxcompiler.lib
-    ${LIB_PATH}/dxc/dxil.lib
-
-    # glfw
-    ${LIB_PATH}/glfw/libglfw3.a
+    Vulkan::Vulkan
+    glfw3
 ) 
-
-# 自动复制 dxc 的 dll
-add_custom_command(TARGET RendererApp POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_CURRENT_SOURCE_DIR}/lib/dxc/dxcompiler.dll"
-        $<TARGET_FILE_DIR:RendererApp>
-
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_CURRENT_SOURCE_DIR}/lib/dxc/dxil.dll"
-        $<TARGET_FILE_DIR:RendererApp>
-)
