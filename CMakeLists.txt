@@ -13,6 +13,8 @@ set(IMGUI_SRC
     "include/imgui/imgui_widgets.cpp"
     "include/imgui/imgui_tables.cpp"
     "include/imgui/imgui_demo.cpp"
+    "include/imgui/backends/imgui_impl_dx12.cpp"
+    "include/imgui/backends/imgui_impl_glfw.cpp"
 )
 set(PROJECT_SRC
     "src/main.cpp"
@@ -29,6 +31,8 @@ add_executable(RendererApp
 target_include_directories(RendererApp PRIVATE
     "include"
     "src"
+
+    "include/imgui"
 )
 
 # Á¬½Ó¿â
