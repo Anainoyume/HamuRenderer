@@ -22,10 +22,8 @@ set(IMGUI_SRC
 set(PROJECT_SRC
     "src/main.cpp"
 )
-set(LIB_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib")
-set(GLAD_SRC "${CMAKE_CURRENT_SOURCE_DIR}/include/glad/glad.c")
-
-set_source_files_properties(${GLAD_SRC} PROPERTIES LANGUAGE C)
+set(LIB_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib") 
+set(GLAD_SRC "${CMAKE_CURRENT_SOURCE_DIR}/include/glad/glad.cpp")
 
 # 查找 Vulkan SDK (依赖系统的 VULKAN_SDK 环境变量)
 # find_package(Vulkan REQUIRED)
@@ -62,4 +60,9 @@ target_link_libraries(RendererApp PRIVATE
 # 我们改了 imgui 的源码, 加载器换成了我们自己的
 target_compile_definitions(RendererApp PRIVATE
     IMGUI_IMPL_OPENGL_LOADER_CUSTOM
+)
+
+# 预编译头
+target_precompile_headers(RendererApp PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/pch.h"
 )
