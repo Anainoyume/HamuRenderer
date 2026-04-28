@@ -13,21 +13,28 @@ set(IMGUI_SRC
     "include/imgui/imgui_widgets.cpp"
     "include/imgui/imgui_tables.cpp"
     "include/imgui/imgui_demo.cpp"
-    "include/imgui/backends/imgui_impl_vulkan.cpp"
+
+    # "include/imgui/backends/imgui_impl_vulkan.cpp"
+    "include/imgui/backends/imgui_impl_opengl3.cpp"
+
     "include/imgui/backends/imgui_impl_glfw.cpp"
 )
 set(PROJECT_SRC
     "src/main.cpp"
 )
 set(LIB_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib")
+set(GLAD_SRC "${CMAKE_CURRENT_SOURCE_DIR}/include/glad/glad.c")
 
-# 1. 查找 Vulkan SDK (依赖系统的 VULKAN_SDK 环境变量)
-find_package(Vulkan REQUIRED)
+set_source_files_properties(${GLAD_SRC} PROPERTIES LANGUAGE C)
+
+# 查找 Vulkan SDK (依赖系统的 VULKAN_SDK 环境变量)
+# find_package(Vulkan REQUIRED)
 
 add_executable(RendererApp
     ${PROJECT_SRC}
     ${STB_IMAGE_SRC}
     ${IMGUI_SRC}
+    ${GLAD_SRC}
 )
 
 # 添加头文件和库路径
@@ -45,6 +52,14 @@ target_link_directories(RendererApp PRIVATE
 # 连接库
 target_link_libraries(RendererApp PRIVATE
     winpthread
-    Vulkan::Vulkan
+    
+    # Vulkan::Vulkan
+    opengl32
+    
     glfw3
 ) 
+
+# 我们改了 imgui 的源码, 加载器换成了我们自己的
+target_compile_definitions(RendererApp PRIVATE
+    IMGUI_IMPL_OPENGL_LOADER_CUSTOM
+)
