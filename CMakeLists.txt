@@ -5,7 +5,7 @@ project(HamuRenderer)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# ÉèÖÃÒ»Ğ©Â·¾¶
+# è®¾ç½®ä¸€äº›è·¯å¾„
 set(STB_IMAGE_SRC "include/stb_image/stb_image.cpp")
 set(IMGUI_SRC 
     "include/imgui/imgui.cpp"
@@ -25,7 +25,7 @@ set(PROJECT_SRC
 set(LIB_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib") 
 set(GLAD_SRC "${CMAKE_CURRENT_SOURCE_DIR}/include/glad/glad.cpp")
 
-# ²éÕÒ Vulkan SDK (ÒÀÀµÏµÍ³µÄ VULKAN_SDK »·¾³±äÁ¿)
+# æŸ¥æ‰¾ Vulkan SDK (ä¾èµ–ç³»ç»Ÿçš„ VULKAN_SDK ç¯å¢ƒå˜é‡)
 # find_package(Vulkan REQUIRED)
 
 add_executable(RendererApp
@@ -35,7 +35,7 @@ add_executable(RendererApp
     ${GLAD_SRC}
 )
 
-# Ìí¼ÓÍ·ÎÄ¼şºÍ¿âÂ·¾¶
+# æ·»åŠ å¤´æ–‡ä»¶å’Œåº“è·¯å¾„
 target_include_directories(RendererApp PRIVATE
     "include"
     "include/imgui"
@@ -47,7 +47,7 @@ target_link_directories(RendererApp PRIVATE
     "lib/glfw"
 )
 
-# Á¬½Ó¿â
+# è¿æ¥åº“
 target_link_libraries(RendererApp PRIVATE
     winpthread
     
@@ -57,12 +57,12 @@ target_link_libraries(RendererApp PRIVATE
     glfw3
 ) 
 
-# ÎÒÃÇ¸ÄÁË imgui µÄÔ´Âë, ¼ÓÔØÆ÷»»³ÉÁËÎÒÃÇ×Ô¼ºµÄ
+# æˆ‘ä»¬æ”¹äº† imgui çš„æºç , åŠ è½½å™¨æ¢æˆäº†æˆ‘ä»¬è‡ªå·±çš„
 target_compile_definitions(RendererApp PRIVATE
     IMGUI_IMPL_OPENGL_LOADER_CUSTOM
 )
 
-# Ô¤±àÒëÍ·
+# é¢„ç¼–è¯‘å¤´
 target_precompile_headers(RendererApp PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/include/pch.h"
 )
