@@ -1,9 +1,9 @@
-# ½âÊÍÒ»ÏÂ gladLoadGLLoader ?
+# è§£é‡Šä¸€ä¸‹ gladLoadGLLoader ?
 ---
 
-Ç¿ÁÒ½âÊÍÒ»ÏÂÕâÀïµÄ `gladLoadGLLoader` ÎªÊ²Ã´´«²ÎÊıÎª  `(GLADloadproc)glfwGetProcAddress`
+å¼ºçƒˆè§£é‡Šä¸€ä¸‹è¿™é‡Œçš„ `gladLoadGLLoader` ä¸ºä»€ä¹ˆä¼ å‚æ•°ä¸º  `(GLADloadproc)glfwGetProcAddress`
 
-Ê×ÏÈÎÒÃÇÒªÖªµÀÔÚ `glad.h` ÀïÆäÊµÊÇÓĞÒ»¼ü¼ÓÔØµÄº¯ÊıµÄ:
+é¦–å…ˆæˆ‘ä»¬è¦çŸ¥é“åœ¨ `glad.h` é‡Œå…¶å®æ˜¯æœ‰ä¸€é”®åŠ è½½çš„å‡½æ•°çš„:
 
 ```cpp
 int gladLoadGL(void) {
@@ -18,11 +18,11 @@ int gladLoadGL(void) {
 }
 ```
 
-¿ÉÒÔ¿´µ½ÕâÀïµ÷ÓÃÁË `gladLoadGLLoader(&get_proc)`
-Õâ¸ö `get_proc` ÓÖÊÇÉ¶ÄØ£¿Ëü¾ÍÊÇ¸ö `wglGetProcAddress` µÄ warpper, ¼ÓÈëÁË¸ü½¡×³ĞÔµÄ´¦Àí¡£
+å¯ä»¥çœ‹åˆ°è¿™é‡Œè°ƒç”¨äº† `gladLoadGLLoader(&get_proc)`
+è¿™ä¸ª `get_proc` åˆæ˜¯å•¥å‘¢ï¼Ÿå®ƒå°±æ˜¯ä¸ª `wglGetProcAddress` çš„ warpper, åŠ å…¥äº†æ›´å¥å£®æ€§çš„å¤„ç†ã€‚
 
-·µ»ØÕâÀïµÄ `gladGetProcAddressPtr`, ÍêÈ«¿ÉÒÔ¿´µ½ËüÒ²ÊÇÒ»¸öº¯Êı, ½ÓÊÕÒ»¸ö×Ö·û´®, ·µ»ØÒ»¸öµØÖ·¡£
-¶ø `open_gl` ÓĞÈçÏÂ´úÂë:
+è¿”å›è¿™é‡Œçš„ `gladGetProcAddressPtr`, å®Œå…¨å¯ä»¥çœ‹åˆ°å®ƒä¹Ÿæ˜¯ä¸€ä¸ªå‡½æ•°, æ¥æ”¶ä¸€ä¸ªå­—ç¬¦ä¸², è¿”å›ä¸€ä¸ªåœ°å€ã€‚
+è€Œ `open_gl` æœ‰å¦‚ä¸‹ä»£ç :
 
 ```cpp
 libGL = LoadLibraryW(L"opengl32.dll");
@@ -34,20 +34,20 @@ if(libGL != NULL) {
 }
 ```
 
-ÏÔÈ»¾ÍÊÇ `wglGetProcAddress` ¶Ô°É¡£
+æ˜¾ç„¶å°±æ˜¯ `wglGetProcAddress` å¯¹å§ã€‚
 
-ÄÇÎªÊ²Ã´ learnOpengl Àï´«Èë `(GLADloadproc)glfwGetProcAddress` ÄØ?
-`glfwGetProcAddress` ÆäÊµÊÇÒ»¸ö¸ü¸ß¼¶°æ±¾µÄ `"wglGetProcAddress"`
+é‚£ä¸ºä»€ä¹ˆ learnOpengl é‡Œä¼ å…¥ `(GLADloadproc)glfwGetProcAddress` å‘¢?
+`glfwGetProcAddress` å…¶å®æ˜¯ä¸€ä¸ªæ›´é«˜çº§ç‰ˆæœ¬çš„ `"wglGetProcAddress"`
 
-ÎÒÃÇÔÚ°²×° `glad.h` ÎÒÃÇÑ¡ÔñÁËÆ½Ì¨Îª windows, Òò´ËÉú³ÉµÄ `open_gl` ÀïÔØÈëµÄ
-»ñÈ¡ÏÔ¿¨Çı¶¯º¯ÊıµÄ·½·¨×ÔÈ»¼ÓÔØÁË `wglGetProcAddress`
+æˆ‘ä»¬åœ¨å®‰è£… `glad.h` æˆ‘ä»¬é€‰æ‹©äº†å¹³å°ä¸º windows, å› æ­¤ç”Ÿæˆçš„ `open_gl` é‡Œè½½å…¥çš„
+è·å–æ˜¾å¡é©±åŠ¨å‡½æ•°çš„æ–¹æ³•è‡ªç„¶åŠ è½½äº† `wglGetProcAddress`
 
-µ«Èç¹ûÊÇÆäËûÆ½Ì¨ÄØ? ÏÔÈ»ÎÒÃÇÒªÈ¥ÏÂÔØÒ»¸öÆäËûÆ½Ì¨µÄ `glad.h`
+ä½†å¦‚æœæ˜¯å…¶ä»–å¹³å°å‘¢? æ˜¾ç„¶æˆ‘ä»¬è¦å»ä¸‹è½½ä¸€ä¸ªå…¶ä»–å¹³å°çš„ `glad.h`
 
-µ«ÊÇ `glfwGetProcAddress` °ïÎÒÃÇÆÁ±ÎÁËÕâ¸öÏ¸½Ú, ËüÔÚ²»Í¬ÏµÍ³ÏÂ»á±»¼ÓÔØÎª²»Í¬µÄ ÏÔ¿¨Çı¶¯º¯Êı¼ÓÔØ·½·¨
-Òò´ËÎÒÃÇÊÖ¶¯µ÷ÓÃ `gladLoadGLLoader`, Ö±½Ó´«ÈëÕâ¸ö¿çÆ½Ì¨µÄ·½·¨»á¸üºÃ, ÕâÑùĞ´³öÀ´µÄ´úÂëÊÇ¿çÆ½Ì¨µÄ¡£
+ä½†æ˜¯ `glfwGetProcAddress` å¸®æˆ‘ä»¬å±è”½äº†è¿™ä¸ªç»†èŠ‚, å®ƒåœ¨ä¸åŒç³»ç»Ÿä¸‹ä¼šè¢«åŠ è½½ä¸ºä¸åŒçš„ æ˜¾å¡é©±åŠ¨å‡½æ•°åŠ è½½æ–¹æ³•
+å› æ­¤æˆ‘ä»¬æ‰‹åŠ¨è°ƒç”¨ `gladLoadGLLoader`, ç›´æ¥ä¼ å…¥è¿™ä¸ªè·¨å¹³å°çš„æ–¹æ³•ä¼šæ›´å¥½, è¿™æ ·å†™å‡ºæ¥çš„ä»£ç æ˜¯è·¨å¹³å°çš„ã€‚
 
-±ğÍü¼Ç½«ÀàĞÍ×ª»¯Îª `(GLADloadproc)`
+åˆ«å¿˜è®°å°†ç±»å‹è½¬åŒ–ä¸º `(GLADloadproc)`
   
 ```cpp
 if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {

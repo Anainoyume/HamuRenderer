@@ -1,447 +1,447 @@
-# GLFW 3.4 API ÍêÕû·ÖÀàÕûÀí
+# GLFW 3.4 API å®Œæ•´åˆ†ç±»æ•´ç†
 
-## 1. ³õÊ¼»¯ÓëÖÕÖ¹ (Initialization and Termination)
+## 1. åˆå§‹åŒ–ä¸ç»ˆæ­¢ (Initialization and Termination)
 
-### ³õÊ¼»¯Ïà¹Ø
-- `glfwInit()` - ³õÊ¼»¯GLFW¿â
-- `glfwTerminate()` - ÖÕÖ¹GLFW¿â
-- `glfwInitHint(int hint, int value)` - ÉèÖÃ³õÊ¼»¯ÌáÊ¾
-- `glfwInitAllocator(const GLFWallocator* allocator)` - ÉèÖÃÄÚ´æ·ÖÅäÆ÷
-- `glfwInitVulkanLoader(PFN_vkGetInstanceProcAddr loader)` - ÉèÖÃVulkan¼ÓÔØÆ÷
+### åˆå§‹åŒ–ç›¸å…³
+- `glfwInit()` - åˆå§‹åŒ–GLFWåº“
+- `glfwTerminate()` - ç»ˆæ­¢GLFWåº“
+- `glfwInitHint(int hint, int value)` - è®¾ç½®åˆå§‹åŒ–æç¤º
+- `glfwInitAllocator(const GLFWallocator* allocator)` - è®¾ç½®å†…å­˜åˆ†é…å™¨
+- `glfwInitVulkanLoader(PFN_vkGetInstanceProcAddr loader)` - è®¾ç½®VulkanåŠ è½½å™¨
 
-### °æ±¾ÓëÆ½Ì¨ĞÅÏ¢
-- `glfwGetVersion(int* major, int* minor, int* rev)` - »ñÈ¡GLFW°æ±¾
-- `glfwGetVersionString()` - »ñÈ¡°æ±¾×Ö·û´®
-- `glfwGetPlatform()` - »ñÈ¡µ±Ç°Æ½Ì¨
-- `glfwPlatformSupported(int platform)` - ¼ì²éÆ½Ì¨Ö§³Ö
+### ç‰ˆæœ¬ä¸å¹³å°ä¿¡æ¯
+- `glfwGetVersion(int* major, int* minor, int* rev)` - è·å–GLFWç‰ˆæœ¬
+- `glfwGetVersionString()` - è·å–ç‰ˆæœ¬å­—ç¬¦ä¸²
+- `glfwGetPlatform()` - è·å–å½“å‰å¹³å°
+- `glfwPlatformSupported(int platform)` - æ£€æŸ¥å¹³å°æ”¯æŒ
 
-### ´íÎó´¦Àí
-- `glfwGetError(const char** description)` - »ñÈ¡²¢Çå³ı´íÎó
-- `glfwSetErrorCallback(GLFWerrorfun callback)` - ÉèÖÃ´íÎó»Øµ÷
-
----
-
-## 2. ¼àÊÓÆ÷Ïà¹Ø (Monitor)
-
-### ¼àÊÓÆ÷²éÑ¯
-- `glfwGetMonitors(int* count)` - »ñÈ¡ËùÓĞ¼àÊÓÆ÷
-- `glfwGetPrimaryMonitor()` - »ñÈ¡Ö÷¼àÊÓÆ÷
-- `glfwGetMonitorPos(GLFWmonitor* monitor, int* xpos, int* ypos)` - »ñÈ¡¼àÊÓÆ÷Î»ÖÃ
-- `glfwGetMonitorWorkarea(GLFWmonitor* monitor, int* xpos, int* ypos, int* width, int* height)` - »ñÈ¡¹¤×÷ÇøÓò
-- `glfwGetMonitorPhysicalSize(GLFWmonitor* monitor, int* widthMM, int* heightMM)` - »ñÈ¡ÎïÀí³ß´ç
-- `glfwGetMonitorContentScale(GLFWmonitor* monitor, float* xscale, float* yscale)` - »ñÈ¡ÄÚÈİËõ·Å
-- `glfwGetMonitorName(GLFWmonitor* monitor)` - »ñÈ¡¼àÊÓÆ÷Ãû³Æ
-
-### ¼àÊÓÆ÷ÓÃ»§Êı¾İ
-- `glfwSetMonitorUserPointer(GLFWmonitor* monitor, void* pointer)` - ÉèÖÃÓÃ»§Ö¸Õë
-- `glfwGetMonitorUserPointer(GLFWmonitor* monitor)` - »ñÈ¡ÓÃ»§Ö¸Õë
-
-### ¼àÊÓÆ÷»Øµ÷
-- `glfwSetMonitorCallback(GLFWmonitorfun callback)` - ÉèÖÃ¼àÊÓÆ÷ÅäÖÃ»Øµ÷
-
-### ÊÓÆµÄ£Ê½
-- `glfwGetVideoModes(GLFWmonitor* monitor, int* count)` - »ñÈ¡ËùÓĞÊÓÆµÄ£Ê½
-- `glfwGetVideoMode(GLFWmonitor* monitor)` - »ñÈ¡µ±Ç°ÊÓÆµÄ£Ê½
-
-### Ù¤Âí¿ØÖÆ
-- `glfwSetGamma(GLFWmonitor* monitor, float gamma)` - ÉèÖÃÙ¤ÂíÖµ
-- `glfwGetGammaRamp(GLFWmonitor* monitor)` - »ñÈ¡Ù¤ÂíĞ±ÆÂ
-- `glfwSetGammaRamp(GLFWmonitor* monitor, const GLFWgammaramp* ramp)` - ÉèÖÃÙ¤ÂíĞ±ÆÂ
+### é”™è¯¯å¤„ç†
+- `glfwGetError(const char** description)` - è·å–å¹¶æ¸…é™¤é”™è¯¯
+- `glfwSetErrorCallback(GLFWerrorfun callback)` - è®¾ç½®é”™è¯¯å›è°ƒ
 
 ---
 
-## 3. ´°¿Ú¹ÜÀí (Window)
+## 2. ç›‘è§†å™¨ç›¸å…³ (Monitor)
 
-### ´°¿Ú´´½¨ÓëÏú»Ù
-- `glfwCreateWindow(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share)` - ´´½¨´°¿Ú
-- `glfwDestroyWindow(GLFWwindow* window)` - Ïú»Ù´°¿Ú
+### ç›‘è§†å™¨æŸ¥è¯¢
+- `glfwGetMonitors(int* count)` - è·å–æ‰€æœ‰ç›‘è§†å™¨
+- `glfwGetPrimaryMonitor()` - è·å–ä¸»ç›‘è§†å™¨
+- `glfwGetMonitorPos(GLFWmonitor* monitor, int* xpos, int* ypos)` - è·å–ç›‘è§†å™¨ä½ç½®
+- `glfwGetMonitorWorkarea(GLFWmonitor* monitor, int* xpos, int* ypos, int* width, int* height)` - è·å–å·¥ä½œåŒºåŸŸ
+- `glfwGetMonitorPhysicalSize(GLFWmonitor* monitor, int* widthMM, int* heightMM)` - è·å–ç‰©ç†å°ºå¯¸
+- `glfwGetMonitorContentScale(GLFWmonitor* monitor, float* xscale, float* yscale)` - è·å–å†…å®¹ç¼©æ”¾
+- `glfwGetMonitorName(GLFWmonitor* monitor)` - è·å–ç›‘è§†å™¨åç§°
 
-### ´°¿ÚÌáÊ¾
-- `glfwDefaultWindowHints()` - ÖØÖÃ´°¿ÚÌáÊ¾
-- `glfwWindowHint(int hint, int value)` - ÉèÖÃÕûÊı´°¿ÚÌáÊ¾
-- `glfwWindowHintString(int hint, const char* value)` - ÉèÖÃ×Ö·û´®´°¿ÚÌáÊ¾
+### ç›‘è§†å™¨ç”¨æˆ·æ•°æ®
+- `glfwSetMonitorUserPointer(GLFWmonitor* monitor, void* pointer)` - è®¾ç½®ç”¨æˆ·æŒ‡é’ˆ
+- `glfwGetMonitorUserPointer(GLFWmonitor* monitor)` - è·å–ç”¨æˆ·æŒ‡é’ˆ
 
-### ´°¿Ú×´Ì¬²éÑ¯ÓëÉèÖÃ
-- `glfwWindowShouldClose(GLFWwindow* window)` - ¼ì²é´°¿Ú¹Ø±Õ±êÖ¾
-- `glfwSetWindowShouldClose(GLFWwindow* window, int value)` - ÉèÖÃ´°¿Ú¹Ø±Õ±êÖ¾
-- `glfwGetWindowTitle(GLFWwindow* window)` - »ñÈ¡´°¿Ú±êÌâ
-- `glfwSetWindowTitle(GLFWwindow* window, const char* title)` - ÉèÖÃ´°¿Ú±êÌâ
-- `glfwSetWindowIcon(GLFWwindow* window, int count, const GLFWimage* images)` - ÉèÖÃ´°¿ÚÍ¼±ê
+### ç›‘è§†å™¨å›è°ƒ
+- `glfwSetMonitorCallback(GLFWmonitorfun callback)` - è®¾ç½®ç›‘è§†å™¨é…ç½®å›è°ƒ
 
-### ´°¿ÚÎ»ÖÃÓë³ß´ç
-- `glfwGetWindowPos(GLFWwindow* window, int* xpos, int* ypos)` - »ñÈ¡´°¿ÚÎ»ÖÃ
-- `glfwSetWindowPos(GLFWwindow* window, int xpos, int ypos)` - ÉèÖÃ´°¿ÚÎ»ÖÃ
-- `glfwGetWindowSize(GLFWwindow* window, int* width, int* height)` - »ñÈ¡´°¿Ú³ß´ç
-- `glfwSetWindowSize(GLFWwindow* window, int width, int height)` - ÉèÖÃ´°¿Ú³ß´ç
-- `glfwSetWindowSizeLimits(GLFWwindow* window, int minwidth, int minheight, int maxwidth, int maxheight)` - ÉèÖÃ³ß´çÏŞÖÆ
-- `glfwSetWindowAspectRatio(GLFWwindow* window, int numer, int denom)` - ÉèÖÃ¿í¸ß±È
+### è§†é¢‘æ¨¡å¼
+- `glfwGetVideoModes(GLFWmonitor* monitor, int* count)` - è·å–æ‰€æœ‰è§†é¢‘æ¨¡å¼
+- `glfwGetVideoMode(GLFWmonitor* monitor)` - è·å–å½“å‰è§†é¢‘æ¨¡å¼
 
-### Ö¡»º³å
-- `glfwGetFramebufferSize(GLFWwindow* window, int* width, int* height)` - »ñÈ¡Ö¡»º³å³ß´ç
-- `glfwGetWindowFrameSize(GLFWwindow* window, int* left, int* top, int* right, int* bottom)` - »ñÈ¡´°¿Ú±ß¿ò³ß´ç
-
-### ÄÚÈİËõ·Å
-- `glfwGetWindowContentScale(GLFWwindow* window, float* xscale, float* yscale)` - »ñÈ¡ÄÚÈİËõ·Å
-
-### ´°¿ÚÍ¸Ã÷¶È
-- `glfwGetWindowOpacity(GLFWwindow* window)` - »ñÈ¡´°¿Ú²»Í¸Ã÷¶È
-- `glfwSetWindowOpacity(GLFWwindow* window, float opacity)` - ÉèÖÃ´°¿Ú²»Í¸Ã÷¶È
-
-### ´°¿Ú×´Ì¬¿ØÖÆ
-- `glfwIconifyWindow(GLFWwindow* window)` - ×îĞ¡»¯´°¿Ú
-- `glfwRestoreWindow(GLFWwindow* window)` - »Ö¸´´°¿Ú
-- `glfwMaximizeWindow(GLFWwindow* window)` - ×î´ó»¯´°¿Ú
-- `glfwShowWindow(GLFWwindow* window)` - ÏÔÊ¾´°¿Ú
-- `glfwHideWindow(GLFWwindow* window)` - Òş²Ø´°¿Ú
-- `glfwFocusWindow(GLFWwindow* window)` - ¾Û½¹´°¿Ú
-- `glfwRequestWindowAttention(GLFWwindow* window)` - ÇëÇóÓÃ»§×¢Òâ
-
-### ¼àÊÓÆ÷ÓëÈ«ÆÁ
-- `glfwGetWindowMonitor(GLFWwindow* window)` - »ñÈ¡´°¿ÚËùÔÚ¼àÊÓÆ÷
-- `glfwSetWindowMonitor(GLFWwindow* window, GLFWmonitor* monitor, int xpos, int ypos, int width, int height, int refreshRate)` - ÉèÖÃ´°¿Ú¼àÊÓÆ÷
-
-### ´°¿ÚÊôĞÔ
-- `glfwGetWindowAttrib(GLFWwindow* window, int attrib)` - »ñÈ¡´°¿ÚÊôĞÔ
-- `glfwSetWindowAttrib(GLFWwindow* window, int attrib, int value)` - ÉèÖÃ´°¿ÚÊôĞÔ
-
-### ´°¿ÚÓÃ»§Êı¾İ
-- `glfwSetWindowUserPointer(GLFWwindow* window, void* pointer)` - ÉèÖÃÓÃ»§Ö¸Õë
-- `glfwGetWindowUserPointer(GLFWwindow* window)` - »ñÈ¡ÓÃ»§Ö¸Õë
-
-### ´°¿Ú»Øµ÷ÉèÖÃ
-- `glfwSetWindowPosCallback(GLFWwindow* window, GLFWwindowposfun callback)` - ÉèÖÃÎ»ÖÃ»Øµ÷
-- `glfwSetWindowSizeCallback(GLFWwindow* window, GLFWwindowsizefun callback)` - ÉèÖÃ³ß´ç»Øµ÷
-- `glfwSetWindowCloseCallback(GLFWwindow* window, GLFWwindowclosefun callback)` - ÉèÖÃ¹Ø±Õ»Øµ÷
-- `glfwSetWindowRefreshCallback(GLFWwindow* window, GLFWwindowrefreshfun callback)` - ÉèÖÃË¢ĞÂ»Øµ÷
-- `glfwSetWindowFocusCallback(GLFWwindow* window, GLFWwindowfocusfun callback)` - ÉèÖÃ½¹µã»Øµ÷
-- `glfwSetWindowIconifyCallback(GLFWwindow* window, GLFWwindowiconifyfun callback)` - ÉèÖÃ×îĞ¡»¯»Øµ÷
-- `glfwSetWindowMaximizeCallback(GLFWwindow* window, GLFWwindowmaximizefun callback)` - ÉèÖÃ×î´ó»¯»Øµ÷
-- `glfwSetFramebufferSizeCallback(GLFWwindow* window, GLFWframebuffersizefun callback)` - ÉèÖÃÖ¡»º³å³ß´ç»Øµ÷
-- `glfwSetWindowContentScaleCallback(GLFWwindow* window, GLFWwindowcontentscalefun callback)` - ÉèÖÃÄÚÈİËõ·Å»Øµ÷
+### ä¼½é©¬æ§åˆ¶
+- `glfwSetGamma(GLFWmonitor* monitor, float gamma)` - è®¾ç½®ä¼½é©¬å€¼
+- `glfwGetGammaRamp(GLFWmonitor* monitor)` - è·å–ä¼½é©¬æ–œå¡
+- `glfwSetGammaRamp(GLFWmonitor* monitor, const GLFWgammaramp* ramp)` - è®¾ç½®ä¼½é©¬æ–œå¡
 
 ---
 
-## 4. ÊÂ¼ş´¦Àí (Event Processing)
+## 3. çª—å£ç®¡ç† (Window)
 
-- `glfwPollEvents()` - ´¦ÀíËùÓĞ´ı´¦ÀíÊÂ¼ş
-- `glfwWaitEvents()` - µÈ´ıÊÂ¼ş
-- `glfwWaitEventsTimeout(double timeout)` - ´ø³¬Ê±µÈ´ıÊÂ¼ş
-- `glfwPostEmptyEvent()` - ·¢ËÍ¿ÕÊÂ¼ş
+### çª—å£åˆ›å»ºä¸é”€æ¯
+- `glfwCreateWindow(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share)` - åˆ›å»ºçª—å£
+- `glfwDestroyWindow(GLFWwindow* window)` - é”€æ¯çª—å£
 
----
+### çª—å£æç¤º
+- `glfwDefaultWindowHints()` - é‡ç½®çª—å£æç¤º
+- `glfwWindowHint(int hint, int value)` - è®¾ç½®æ•´æ•°çª—å£æç¤º
+- `glfwWindowHintString(int hint, const char* value)` - è®¾ç½®å­—ç¬¦ä¸²çª—å£æç¤º
 
-## 5. ÊäÈë´¦Àí (Input)
+### çª—å£çŠ¶æ€æŸ¥è¯¢ä¸è®¾ç½®
+- `glfwWindowShouldClose(GLFWwindow* window)` - æ£€æŸ¥çª—å£å…³é—­æ ‡å¿—
+- `glfwSetWindowShouldClose(GLFWwindow* window, int value)` - è®¾ç½®çª—å£å…³é—­æ ‡å¿—
+- `glfwGetWindowTitle(GLFWwindow* window)` - è·å–çª—å£æ ‡é¢˜
+- `glfwSetWindowTitle(GLFWwindow* window, const char* title)` - è®¾ç½®çª—å£æ ‡é¢˜
+- `glfwSetWindowIcon(GLFWwindow* window, int count, const GLFWimage* images)` - è®¾ç½®çª—å£å›¾æ ‡
 
-### ÊäÈëÄ£Ê½
-- `glfwGetInputMode(GLFWwindow* window, int mode)` - »ñÈ¡ÊäÈëÄ£Ê½
-- `glfwSetInputMode(GLFWwindow* window, int mode, int value)` - ÉèÖÃÊäÈëÄ£Ê½
-- `glfwRawMouseMotionSupported()` - ¼ì²éÔ­Ê¼Êó±êÒÆ¶¯Ö§³Ö
+### çª—å£ä½ç½®ä¸å°ºå¯¸
+- `glfwGetWindowPos(GLFWwindow* window, int* xpos, int* ypos)` - è·å–çª—å£ä½ç½®
+- `glfwSetWindowPos(GLFWwindow* window, int xpos, int ypos)` - è®¾ç½®çª—å£ä½ç½®
+- `glfwGetWindowSize(GLFWwindow* window, int* width, int* height)` - è·å–çª—å£å°ºå¯¸
+- `glfwSetWindowSize(GLFWwindow* window, int width, int height)` - è®¾ç½®çª—å£å°ºå¯¸
+- `glfwSetWindowSizeLimits(GLFWwindow* window, int minwidth, int minheight, int maxwidth, int maxheight)` - è®¾ç½®å°ºå¯¸é™åˆ¶
+- `glfwSetWindowAspectRatio(GLFWwindow* window, int numer, int denom)` - è®¾ç½®å®½é«˜æ¯”
 
-### ¼üÅÌÊäÈë
-- `glfwGetKeyName(int key, int scancode)` - »ñÈ¡°´¼üÃû³Æ
-- `glfwGetKeyScancode(int key)` - »ñÈ¡°´¼üÉ¨ÃèÂë
-- `glfwGetKey(GLFWwindow* window, int key)` - »ñÈ¡°´¼ü×´Ì¬
-- `glfwSetKeyCallback(GLFWwindow* window, GLFWkeyfun callback)` - ÉèÖÃ°´¼ü»Øµ÷
-- `glfwSetCharCallback(GLFWwindow* window, GLFWcharfun callback)` - ÉèÖÃ×Ö·û»Øµ÷
-- `glfwSetCharModsCallback(GLFWwindow* window, GLFWcharmodsfun callback)` - ÉèÖÃ´øĞŞÊÎ·û×Ö·û»Øµ÷£¨ÒÑ·ÏÆú£©
+### å¸§ç¼“å†²
+- `glfwGetFramebufferSize(GLFWwindow* window, int* width, int* height)` - è·å–å¸§ç¼“å†²å°ºå¯¸
+- `glfwGetWindowFrameSize(GLFWwindow* window, int* left, int* top, int* right, int* bottom)` - è·å–çª—å£è¾¹æ¡†å°ºå¯¸
 
-### Êó±êÊäÈë
-- `glfwGetMouseButton(GLFWwindow* window, int button)` - »ñÈ¡Êó±ê°´Å¥×´Ì¬
-- `glfwGetCursorPos(GLFWwindow* window, double* xpos, double* ypos)` - »ñÈ¡¹â±êÎ»ÖÃ
-- `glfwSetCursorPos(GLFWwindow* window, double xpos, double ypos)` - ÉèÖÃ¹â±êÎ»ÖÃ
-- `glfwSetMouseButtonCallback(GLFWwindow* window, GLFWmousebuttonfun callback)` - ÉèÖÃÊó±ê°´Å¥»Øµ÷
-- `glfwSetCursorPosCallback(GLFWwindow* window, GLFWcursorposfun callback)` - ÉèÖÃ¹â±êÎ»ÖÃ»Øµ÷
-- `glfwSetCursorEnterCallback(GLFWwindow* window, GLFWcursorenterfun callback)` - ÉèÖÃ¹â±ê½øÈë»Øµ÷
-- `glfwSetScrollCallback(GLFWwindow* window, GLFWscrollfun callback)` - ÉèÖÃ¹ö¶¯»Øµ÷
+### å†…å®¹ç¼©æ”¾
+- `glfwGetWindowContentScale(GLFWwindow* window, float* xscale, float* yscale)` - è·å–å†…å®¹ç¼©æ”¾
 
-### ¹â±ê¹ÜÀí
-- `glfwCreateCursor(const GLFWimage* image, int xhot, int yhot)` - ´´½¨×Ô¶¨Òå¹â±ê
-- `glfwCreateStandardCursor(int shape)` - ´´½¨±ê×¼¹â±ê
-- `glfwDestroyCursor(GLFWcursor* cursor)` - Ïú»Ù¹â±ê
-- `glfwSetCursor(GLFWwindow* window, GLFWcursor* cursor)` - ÉèÖÃ´°¿Ú¹â±ê
+### çª—å£é€æ˜åº¦
+- `glfwGetWindowOpacity(GLFWwindow* window)` - è·å–çª—å£ä¸é€æ˜åº¦
+- `glfwSetWindowOpacity(GLFWwindow* window, float opacity)` - è®¾ç½®çª—å£ä¸é€æ˜åº¦
 
-### Â·¾¶ÍÏ·Å
-- `glfwSetDropCallback(GLFWwindow* window, GLFWdropfun callback)` - ÉèÖÃÂ·¾¶ÍÏ·Å»Øµ÷
+### çª—å£çŠ¶æ€æ§åˆ¶
+- `glfwIconifyWindow(GLFWwindow* window)` - æœ€å°åŒ–çª—å£
+- `glfwRestoreWindow(GLFWwindow* window)` - æ¢å¤çª—å£
+- `glfwMaximizeWindow(GLFWwindow* window)` - æœ€å¤§åŒ–çª—å£
+- `glfwShowWindow(GLFWwindow* window)` - æ˜¾ç¤ºçª—å£
+- `glfwHideWindow(GLFWwindow* window)` - éšè—çª—å£
+- `glfwFocusWindow(GLFWwindow* window)` - èšç„¦çª—å£
+- `glfwRequestWindowAttention(GLFWwindow* window)` - è¯·æ±‚ç”¨æˆ·æ³¨æ„
 
-### ¼ôÌù°å
-- `glfwSetClipboardString(GLFWwindow* window, const char* string)` - ÉèÖÃ¼ôÌù°åÄÚÈİ
-- `glfwGetClipboardString(GLFWwindow* window)` - »ñÈ¡¼ôÌù°åÄÚÈİ
+### ç›‘è§†å™¨ä¸å…¨å±
+- `glfwGetWindowMonitor(GLFWwindow* window)` - è·å–çª—å£æ‰€åœ¨ç›‘è§†å™¨
+- `glfwSetWindowMonitor(GLFWwindow* window, GLFWmonitor* monitor, int xpos, int ypos, int width, int height, int refreshRate)` - è®¾ç½®çª—å£ç›‘è§†å™¨
 
----
+### çª—å£å±æ€§
+- `glfwGetWindowAttrib(GLFWwindow* window, int attrib)` - è·å–çª—å£å±æ€§
+- `glfwSetWindowAttrib(GLFWwindow* window, int attrib, int value)` - è®¾ç½®çª—å£å±æ€§
 
-## 6. ÓÎÏ·ÊÖ±ú/Ò¡¸Ë (Joystick/Gamepad)
+### çª—å£ç”¨æˆ·æ•°æ®
+- `glfwSetWindowUserPointer(GLFWwindow* window, void* pointer)` - è®¾ç½®ç”¨æˆ·æŒ‡é’ˆ
+- `glfwGetWindowUserPointer(GLFWwindow* window)` - è·å–ç”¨æˆ·æŒ‡é’ˆ
 
-### Ò¡¸Ë²éÑ¯
-- `glfwJoystickPresent(int jid)` - ¼ì²éÒ¡¸ËÊÇ·ñ´æÔÚ
-- `glfwGetJoystickAxes(int jid, int* count)` - »ñÈ¡Ò¡¸ËÖáÖµ
-- `glfwGetJoystickButtons(int jid, int* count)` - »ñÈ¡Ò¡¸Ë°´Å¥×´Ì¬
-- `glfwGetJoystickHats(int jid, int* count)` - »ñÈ¡Ò¡¸ËÃ±×´Ì¬
-- `glfwGetJoystickName(int jid)` - »ñÈ¡Ò¡¸ËÃû³Æ
-- `glfwGetJoystickGUID(int jid)` - »ñÈ¡Ò¡¸ËGUID
-
-### Ò¡¸ËÓÃ»§Êı¾İ
-- `glfwSetJoystickUserPointer(int jid, void* pointer)` - ÉèÖÃÓÃ»§Ö¸Õë
-- `glfwGetJoystickUserPointer(int jid)` - »ñÈ¡ÓÃ»§Ö¸Õë
-
-### Ò¡¸Ë»Øµ÷
-- `glfwSetJoystickCallback(GLFWjoystickfun callback)` - ÉèÖÃÒ¡¸Ë»Øµ÷
-
-### ÓÎÏ·ÊÖ±ú
-- `glfwJoystickIsGamepad(int jid)` - ¼ì²éÊÇ·ñÓĞÓÎÏ·ÊÖ±úÓ³Éä
-- `glfwUpdateGamepadMappings(const char* string)` - ¸üĞÂÓÎÏ·ÊÖ±úÓ³Éä
-- `glfwGetGamepadName(int jid)` - »ñÈ¡ÓÎÏ·ÊÖ±úÃû³Æ
-- `glfwGetGamepadState(int jid, GLFWgamepadstate* state)` - »ñÈ¡ÓÎÏ·ÊÖ±ú×´Ì¬
+### çª—å£å›è°ƒè®¾ç½®
+- `glfwSetWindowPosCallback(GLFWwindow* window, GLFWwindowposfun callback)` - è®¾ç½®ä½ç½®å›è°ƒ
+- `glfwSetWindowSizeCallback(GLFWwindow* window, GLFWwindowsizefun callback)` - è®¾ç½®å°ºå¯¸å›è°ƒ
+- `glfwSetWindowCloseCallback(GLFWwindow* window, GLFWwindowclosefun callback)` - è®¾ç½®å…³é—­å›è°ƒ
+- `glfwSetWindowRefreshCallback(GLFWwindow* window, GLFWwindowrefreshfun callback)` - è®¾ç½®åˆ·æ–°å›è°ƒ
+- `glfwSetWindowFocusCallback(GLFWwindow* window, GLFWwindowfocusfun callback)` - è®¾ç½®ç„¦ç‚¹å›è°ƒ
+- `glfwSetWindowIconifyCallback(GLFWwindow* window, GLFWwindowiconifyfun callback)` - è®¾ç½®æœ€å°åŒ–å›è°ƒ
+- `glfwSetWindowMaximizeCallback(GLFWwindow* window, GLFWwindowmaximizefun callback)` - è®¾ç½®æœ€å¤§åŒ–å›è°ƒ
+- `glfwSetFramebufferSizeCallback(GLFWwindow* window, GLFWframebuffersizefun callback)` - è®¾ç½®å¸§ç¼“å†²å°ºå¯¸å›è°ƒ
+- `glfwSetWindowContentScaleCallback(GLFWwindow* window, GLFWwindowcontentscalefun callback)` - è®¾ç½®å†…å®¹ç¼©æ”¾å›è°ƒ
 
 ---
 
-## 7. Ê±¼ä (Time)
+## 4. äº‹ä»¶å¤„ç† (Event Processing)
 
-- `glfwGetTime()` - »ñÈ¡GLFWÊ±¼ä
-- `glfwSetTime(double time)` - ÉèÖÃGLFWÊ±¼ä
-- `glfwGetTimerValue()` - »ñÈ¡Ô­Ê¼¼ÆÊ±Æ÷Öµ
-- `glfwGetTimerFrequency()` - »ñÈ¡¼ÆÊ±Æ÷ÆµÂÊ
-
----
-
-## 8. OpenGL/OpenGL ES ÉÏÏÂÎÄ (Context)
-
-### ÉÏÏÂÎÄ¹ÜÀí
-- `glfwMakeContextCurrent(GLFWwindow* window)` - Ê¹ÉÏÏÂÎÄ³ÉÎªµ±Ç°
-- `glfwGetCurrentContext()` - »ñÈ¡µ±Ç°ÉÏÏÂÎÄ´°¿Ú
-- `glfwSwapBuffers(GLFWwindow* window)` - ½»»»Ç°ºó»º³å
-- `glfwSwapInterval(int interval)` - ÉèÖÃ½»»»¼ä¸ô
-
-### À©Õ¹Óëº¯Êı¼ÓÔØ
-- `glfwExtensionSupported(const char* extension)` - ¼ì²éÀ©Õ¹Ö§³Ö
-- `glfwGetProcAddress(const char* procname)` - »ñÈ¡º¯ÊıµØÖ·
+- `glfwPollEvents()` - å¤„ç†æ‰€æœ‰å¾…å¤„ç†äº‹ä»¶
+- `glfwWaitEvents()` - ç­‰å¾…äº‹ä»¶
+- `glfwWaitEventsTimeout(double timeout)` - å¸¦è¶…æ—¶ç­‰å¾…äº‹ä»¶
+- `glfwPostEmptyEvent()` - å‘é€ç©ºäº‹ä»¶
 
 ---
 
-## 9. Vulkan Ö§³Ö (Vulkan)
+## 5. è¾“å…¥å¤„ç† (Input)
 
-- `glfwVulkanSupported()` - ¼ì²éVulkanÖ§³Ö
-- `glfwGetRequiredInstanceExtensions(uint32_t* count)` - »ñÈ¡ËùĞèÊµÀıÀ©Õ¹
-- `glfwGetInstanceProcAddress(VkInstance instance, const char* procname)` - »ñÈ¡ÊµÀıº¯ÊıµØÖ·
-- `glfwGetPhysicalDevicePresentationSupport(VkInstance instance, VkPhysicalDevice device, uint32_t queuefamily)` - ¼ì²éÎïÀíÉè±¸³ÊÏÖÖ§³Ö
-- `glfwCreateWindowSurface(VkInstance instance, GLFWwindow* window, const VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)` - ´´½¨´°¿Ú±íÃæ
+### è¾“å…¥æ¨¡å¼
+- `glfwGetInputMode(GLFWwindow* window, int mode)` - è·å–è¾“å…¥æ¨¡å¼
+- `glfwSetInputMode(GLFWwindow* window, int mode, int value)` - è®¾ç½®è¾“å…¥æ¨¡å¼
+- `glfwRawMouseMotionSupported()` - æ£€æŸ¥åŸå§‹é¼ æ ‡ç§»åŠ¨æ”¯æŒ
+
+### é”®ç›˜è¾“å…¥
+- `glfwGetKeyName(int key, int scancode)` - è·å–æŒ‰é”®åç§°
+- `glfwGetKeyScancode(int key)` - è·å–æŒ‰é”®æ‰«æç 
+- `glfwGetKey(GLFWwindow* window, int key)` - è·å–æŒ‰é”®çŠ¶æ€
+- `glfwSetKeyCallback(GLFWwindow* window, GLFWkeyfun callback)` - è®¾ç½®æŒ‰é”®å›è°ƒ
+- `glfwSetCharCallback(GLFWwindow* window, GLFWcharfun callback)` - è®¾ç½®å­—ç¬¦å›è°ƒ
+- `glfwSetCharModsCallback(GLFWwindow* window, GLFWcharmodsfun callback)` - è®¾ç½®å¸¦ä¿®é¥°ç¬¦å­—ç¬¦å›è°ƒï¼ˆå·²åºŸå¼ƒï¼‰
+
+### é¼ æ ‡è¾“å…¥
+- `glfwGetMouseButton(GLFWwindow* window, int button)` - è·å–é¼ æ ‡æŒ‰é’®çŠ¶æ€
+- `glfwGetCursorPos(GLFWwindow* window, double* xpos, double* ypos)` - è·å–å…‰æ ‡ä½ç½®
+- `glfwSetCursorPos(GLFWwindow* window, double xpos, double ypos)` - è®¾ç½®å…‰æ ‡ä½ç½®
+- `glfwSetMouseButtonCallback(GLFWwindow* window, GLFWmousebuttonfun callback)` - è®¾ç½®é¼ æ ‡æŒ‰é’®å›è°ƒ
+- `glfwSetCursorPosCallback(GLFWwindow* window, GLFWcursorposfun callback)` - è®¾ç½®å…‰æ ‡ä½ç½®å›è°ƒ
+- `glfwSetCursorEnterCallback(GLFWwindow* window, GLFWcursorenterfun callback)` - è®¾ç½®å…‰æ ‡è¿›å…¥å›è°ƒ
+- `glfwSetScrollCallback(GLFWwindow* window, GLFWscrollfun callback)` - è®¾ç½®æ»šåŠ¨å›è°ƒ
+
+### å…‰æ ‡ç®¡ç†
+- `glfwCreateCursor(const GLFWimage* image, int xhot, int yhot)` - åˆ›å»ºè‡ªå®šä¹‰å…‰æ ‡
+- `glfwCreateStandardCursor(int shape)` - åˆ›å»ºæ ‡å‡†å…‰æ ‡
+- `glfwDestroyCursor(GLFWcursor* cursor)` - é”€æ¯å…‰æ ‡
+- `glfwSetCursor(GLFWwindow* window, GLFWcursor* cursor)` - è®¾ç½®çª—å£å…‰æ ‡
+
+### è·¯å¾„æ‹–æ”¾
+- `glfwSetDropCallback(GLFWwindow* window, GLFWdropfun callback)` - è®¾ç½®è·¯å¾„æ‹–æ”¾å›è°ƒ
+
+### å‰ªè´´æ¿
+- `glfwSetClipboardString(GLFWwindow* window, const char* string)` - è®¾ç½®å‰ªè´´æ¿å†…å®¹
+- `glfwGetClipboardString(GLFWwindow* window)` - è·å–å‰ªè´´æ¿å†…å®¹
 
 ---
 
-# ËùÓĞ»Øµ÷º¯Êı (Callback Functions)
+## 6. æ¸¸æˆæ‰‹æŸ„/æ‘‡æ† (Joystick/Gamepad)
 
-## 1. ´íÎó´¦Àí»Øµ÷
+### æ‘‡æ†æŸ¥è¯¢
+- `glfwJoystickPresent(int jid)` - æ£€æŸ¥æ‘‡æ†æ˜¯å¦å­˜åœ¨
+- `glfwGetJoystickAxes(int jid, int* count)` - è·å–æ‘‡æ†è½´å€¼
+- `glfwGetJoystickButtons(int jid, int* count)` - è·å–æ‘‡æ†æŒ‰é’®çŠ¶æ€
+- `glfwGetJoystickHats(int jid, int* count)` - è·å–æ‘‡æ†å¸½çŠ¶æ€
+- `glfwGetJoystickName(int jid)` - è·å–æ‘‡æ†åç§°
+- `glfwGetJoystickGUID(int jid)` - è·å–æ‘‡æ†GUID
+
+### æ‘‡æ†ç”¨æˆ·æ•°æ®
+- `glfwSetJoystickUserPointer(int jid, void* pointer)` - è®¾ç½®ç”¨æˆ·æŒ‡é’ˆ
+- `glfwGetJoystickUserPointer(int jid)` - è·å–ç”¨æˆ·æŒ‡é’ˆ
+
+### æ‘‡æ†å›è°ƒ
+- `glfwSetJoystickCallback(GLFWjoystickfun callback)` - è®¾ç½®æ‘‡æ†å›è°ƒ
+
+### æ¸¸æˆæ‰‹æŸ„
+- `glfwJoystickIsGamepad(int jid)` - æ£€æŸ¥æ˜¯å¦æœ‰æ¸¸æˆæ‰‹æŸ„æ˜ å°„
+- `glfwUpdateGamepadMappings(const char* string)` - æ›´æ–°æ¸¸æˆæ‰‹æŸ„æ˜ å°„
+- `glfwGetGamepadName(int jid)` - è·å–æ¸¸æˆæ‰‹æŸ„åç§°
+- `glfwGetGamepadState(int jid, GLFWgamepadstate* state)` - è·å–æ¸¸æˆæ‰‹æŸ„çŠ¶æ€
+
+---
+
+## 7. æ—¶é—´ (Time)
+
+- `glfwGetTime()` - è·å–GLFWæ—¶é—´
+- `glfwSetTime(double time)` - è®¾ç½®GLFWæ—¶é—´
+- `glfwGetTimerValue()` - è·å–åŸå§‹è®¡æ—¶å™¨å€¼
+- `glfwGetTimerFrequency()` - è·å–è®¡æ—¶å™¨é¢‘ç‡
+
+---
+
+## 8. OpenGL/OpenGL ES ä¸Šä¸‹æ–‡ (Context)
+
+### ä¸Šä¸‹æ–‡ç®¡ç†
+- `glfwMakeContextCurrent(GLFWwindow* window)` - ä½¿ä¸Šä¸‹æ–‡æˆä¸ºå½“å‰
+- `glfwGetCurrentContext()` - è·å–å½“å‰ä¸Šä¸‹æ–‡çª—å£
+- `glfwSwapBuffers(GLFWwindow* window)` - äº¤æ¢å‰åç¼“å†²
+- `glfwSwapInterval(int interval)` - è®¾ç½®äº¤æ¢é—´éš”
+
+### æ‰©å±•ä¸å‡½æ•°åŠ è½½
+- `glfwExtensionSupported(const char* extension)` - æ£€æŸ¥æ‰©å±•æ”¯æŒ
+- `glfwGetProcAddress(const char* procname)` - è·å–å‡½æ•°åœ°å€
+
+---
+
+## 9. Vulkan æ”¯æŒ (Vulkan)
+
+- `glfwVulkanSupported()` - æ£€æŸ¥Vulkanæ”¯æŒ
+- `glfwGetRequiredInstanceExtensions(uint32_t* count)` - è·å–æ‰€éœ€å®ä¾‹æ‰©å±•
+- `glfwGetInstanceProcAddress(VkInstance instance, const char* procname)` - è·å–å®ä¾‹å‡½æ•°åœ°å€
+- `glfwGetPhysicalDevicePresentationSupport(VkInstance instance, VkPhysicalDevice device, uint32_t queuefamily)` - æ£€æŸ¥ç‰©ç†è®¾å¤‡å‘ˆç°æ”¯æŒ
+- `glfwCreateWindowSurface(VkInstance instance, GLFWwindow* window, const VkAllocationCallbacks* allocator, VkSurfaceKHR* surface)` - åˆ›å»ºçª—å£è¡¨é¢
+
+---
+
+# æ‰€æœ‰å›è°ƒå‡½æ•° (Callback Functions)
+
+## 1. é”™è¯¯å¤„ç†å›è°ƒ
 ```c
 typedef void (* GLFWerrorfun)(int error_code, const char* description);
 ```
-**ÓÃÍ¾**: ´íÎó·¢ÉúÊ±µ÷ÓÃ  
-**²ÎÊı**: ´íÎó´úÂë¡¢´íÎóÃèÊö
+**ç”¨é€”**: é”™è¯¯å‘ç”Ÿæ—¶è°ƒç”¨  
+**å‚æ•°**: é”™è¯¯ä»£ç ã€é”™è¯¯æè¿°
 
 ---
 
-## 2. ¼àÊÓÆ÷»Øµ÷
+## 2. ç›‘è§†å™¨å›è°ƒ
 ```c
 typedef void (* GLFWmonitorfun)(GLFWmonitor* monitor, int event);
 ```
-**ÓÃÍ¾**: ¼àÊÓÆ÷Á¬½Ó/¶Ï¿ªÊ±µ÷ÓÃ  
-**²ÎÊı**: ¼àÊÓÆ÷¾ä±ú¡¢ÊÂ¼şÀàĞÍ(GLFW_CONNECTED/GLFW_DISCONNECTED)
+**ç”¨é€”**: ç›‘è§†å™¨è¿æ¥/æ–­å¼€æ—¶è°ƒç”¨  
+**å‚æ•°**: ç›‘è§†å™¨å¥æŸ„ã€äº‹ä»¶ç±»å‹(GLFW_CONNECTED/GLFW_DISCONNECTED)
 
 ---
 
-## 3. ´°¿ÚÎ»ÖÃ»Øµ÷
+## 3. çª—å£ä½ç½®å›è°ƒ
 ```c
 typedef void (* GLFWwindowposfun)(GLFWwindow* window, int xpos, int ypos);
 ```
-**ÓÃÍ¾**: ´°¿ÚÒÆ¶¯Ê±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢ĞÂµÄx×ø±ê¡¢ĞÂµÄy×ø±ê
+**ç”¨é€”**: çª—å£ç§»åŠ¨æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€æ–°çš„xåæ ‡ã€æ–°çš„yåæ ‡
 
 ---
 
-## 4. ´°¿Ú³ß´ç»Øµ÷
+## 4. çª—å£å°ºå¯¸å›è°ƒ
 ```c
 typedef void (* GLFWwindowsizefun)(GLFWwindow* window, int width, int height);
 ```
-**ÓÃÍ¾**: ´°¿Ú´óĞ¡¸Ä±äÊ±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢ĞÂ¿í¶È¡¢ĞÂ¸ß¶È
+**ç”¨é€”**: çª—å£å¤§å°æ”¹å˜æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€æ–°å®½åº¦ã€æ–°é«˜åº¦
 
 ---
 
-## 5. ´°¿Ú¹Ø±Õ»Øµ÷
+## 5. çª—å£å…³é—­å›è°ƒ
 ```c
 typedef void (* GLFWwindowclosefun)(GLFWwindow* window);
 ```
-**ÓÃÍ¾**: ÓÃ»§³¢ÊÔ¹Ø±Õ´°¿ÚÊ±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú
+**ç”¨é€”**: ç”¨æˆ·å°è¯•å…³é—­çª—å£æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„
 
 ---
 
-## 6. ´°¿ÚË¢ĞÂ»Øµ÷
+## 6. çª—å£åˆ·æ–°å›è°ƒ
 ```c
 typedef void (* GLFWwindowrefreshfun)(GLFWwindow* window);
 ```
-**ÓÃÍ¾**: ´°¿ÚÄÚÈİĞèÒªË¢ĞÂÊ±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú
+**ç”¨é€”**: çª—å£å†…å®¹éœ€è¦åˆ·æ–°æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„
 
 ---
 
-## 7. ´°¿Ú½¹µã»Øµ÷
+## 7. çª—å£ç„¦ç‚¹å›è°ƒ
 ```c
 typedef void (* GLFWwindowfocusfun)(GLFWwindow* window, int focused);
 ```
-**ÓÃÍ¾**: ´°¿Ú»ñµÃ/Ê§È¥½¹µãÊ±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢½¹µã×´Ì¬(GLFW_TRUE/GLFW_FALSE)
+**ç”¨é€”**: çª—å£è·å¾—/å¤±å»ç„¦ç‚¹æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€ç„¦ç‚¹çŠ¶æ€(GLFW_TRUE/GLFW_FALSE)
 
 ---
 
-## 8. ´°¿Ú×îĞ¡»¯»Øµ÷
+## 8. çª—å£æœ€å°åŒ–å›è°ƒ
 ```c
 typedef void (* GLFWwindowiconifyfun)(GLFWwindow* window, int iconified);
 ```
-**ÓÃÍ¾**: ´°¿Ú×îĞ¡»¯/»Ö¸´Ê±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢×îĞ¡»¯×´Ì¬(GLFW_TRUE/GLFW_FALSE)
+**ç”¨é€”**: çª—å£æœ€å°åŒ–/æ¢å¤æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€æœ€å°åŒ–çŠ¶æ€(GLFW_TRUE/GLFW_FALSE)
 
 ---
 
-## 9. ´°¿Ú×î´ó»¯»Øµ÷
+## 9. çª—å£æœ€å¤§åŒ–å›è°ƒ
 ```c
 typedef void (* GLFWwindowmaximizefun)(GLFWwindow* window, int maximized);
 ```
-**ÓÃÍ¾**: ´°¿Ú×î´ó»¯/»Ö¸´Ê±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢×î´ó»¯×´Ì¬(GLFW_TRUE/GLFW_FALSE)
+**ç”¨é€”**: çª—å£æœ€å¤§åŒ–/æ¢å¤æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€æœ€å¤§åŒ–çŠ¶æ€(GLFW_TRUE/GLFW_FALSE)
 
 ---
 
-## 10. Ö¡»º³å³ß´ç»Øµ÷
+## 10. å¸§ç¼“å†²å°ºå¯¸å›è°ƒ
 ```c
 typedef void (* GLFWframebuffersizefun)(GLFWwindow* window, int width, int height);
 ```
-**ÓÃÍ¾**: Ö¡»º³å´óĞ¡¸Ä±äÊ±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢ĞÂ¿í¶È(ÏñËØ)¡¢ĞÂ¸ß¶È(ÏñËØ)
+**ç”¨é€”**: å¸§ç¼“å†²å¤§å°æ”¹å˜æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€æ–°å®½åº¦(åƒç´ )ã€æ–°é«˜åº¦(åƒç´ )
 
 ---
 
-## 11. ´°¿ÚÄÚÈİËõ·Å»Øµ÷
+## 11. çª—å£å†…å®¹ç¼©æ”¾å›è°ƒ
 ```c
 typedef void (* GLFWwindowcontentscalefun)(GLFWwindow* window, float xscale, float yscale);
 ```
-**ÓÃÍ¾**: ´°¿ÚÄÚÈİËõ·Å¸Ä±äÊ±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢xÖáËõ·Å¡¢yÖáËõ·Å
+**ç”¨é€”**: çª—å£å†…å®¹ç¼©æ”¾æ”¹å˜æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€xè½´ç¼©æ”¾ã€yè½´ç¼©æ”¾
 
 ---
 
-## 12. Êó±ê°´Å¥»Øµ÷
+## 12. é¼ æ ‡æŒ‰é’®å›è°ƒ
 ```c
 typedef void (* GLFWmousebuttonfun)(GLFWwindow* window, int button, int action, int mods);
 ```
-**ÓÃÍ¾**: Êó±ê°´Å¥°´ÏÂ/ÊÍ·ÅÊ±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢°´Å¥ID¡¢¶¯×÷(PRESS/RELEASE)¡¢ĞŞÊÎ¼ü
+**ç”¨é€”**: é¼ æ ‡æŒ‰é’®æŒ‰ä¸‹/é‡Šæ”¾æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€æŒ‰é’®IDã€åŠ¨ä½œ(PRESS/RELEASE)ã€ä¿®é¥°é”®
 
 ---
 
-## 13. ¹â±êÎ»ÖÃ»Øµ÷
+## 13. å…‰æ ‡ä½ç½®å›è°ƒ
 ```c
 typedef void (* GLFWcursorposfun)(GLFWwindow* window, double xpos, double ypos);
 ```
-**ÓÃÍ¾**: ¹â±êÒÆ¶¯Ê±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢ĞÂx×ø±ê¡¢ĞÂy×ø±ê
+**ç”¨é€”**: å…‰æ ‡ç§»åŠ¨æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€æ–°xåæ ‡ã€æ–°yåæ ‡
 
 ---
 
-## 14. ¹â±ê½øÈë»Øµ÷
+## 14. å…‰æ ‡è¿›å…¥å›è°ƒ
 ```c
 typedef void (* GLFWcursorenterfun)(GLFWwindow* window, int entered);
 ```
-**ÓÃÍ¾**: ¹â±ê½øÈë/Àë¿ª´°¿ÚÄÚÈİÇøÓòÊ±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢½øÈë×´Ì¬(GLFW_TRUE/GLFW_FALSE)
+**ç”¨é€”**: å…‰æ ‡è¿›å…¥/ç¦»å¼€çª—å£å†…å®¹åŒºåŸŸæ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€è¿›å…¥çŠ¶æ€(GLFW_TRUE/GLFW_FALSE)
 
 ---
 
-## 15. ¹ö¶¯»Øµ÷
+## 15. æ»šåŠ¨å›è°ƒ
 ```c
 typedef void (* GLFWscrollfun)(GLFWwindow* window, double xoffset, double yoffset);
 ```
-**ÓÃÍ¾**: ¹ö¶¯Éè±¸Ê¹ÓÃÊ±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢xÖáÆ«ÒÆÁ¿¡¢yÖáÆ«ÒÆÁ¿
+**ç”¨é€”**: æ»šåŠ¨è®¾å¤‡ä½¿ç”¨æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€xè½´åç§»é‡ã€yè½´åç§»é‡
 
 ---
 
-## 16. ¼üÅÌ°´¼ü»Øµ÷
+## 16. é”®ç›˜æŒ‰é”®å›è°ƒ
 ```c
 typedef void (* GLFWkeyfun)(GLFWwindow* window, int key, int scancode, int action, int mods);
 ```
-**ÓÃÍ¾**: ¼üÅÌ°´¼ü°´ÏÂ/ÊÍ·Å/ÖØ¸´Ê±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢°´¼üÂë¡¢É¨ÃèÂë¡¢¶¯×÷(PRESS/RELEASE/REPEAT)¡¢ĞŞÊÎ¼ü
+**ç”¨é€”**: é”®ç›˜æŒ‰é”®æŒ‰ä¸‹/é‡Šæ”¾/é‡å¤æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€æŒ‰é”®ç ã€æ‰«æç ã€åŠ¨ä½œ(PRESS/RELEASE/REPEAT)ã€ä¿®é¥°é”®
 
 ---
 
-## 17. ×Ö·ûÊäÈë»Øµ÷
+## 17. å­—ç¬¦è¾“å…¥å›è°ƒ
 ```c
 typedef void (* GLFWcharfun)(GLFWwindow* window, unsigned int codepoint);
 ```
-**ÓÃÍ¾**: Unicode×Ö·ûÊäÈëÊ±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢UnicodeÂëµã
+**ç”¨é€”**: Unicodeå­—ç¬¦è¾“å…¥æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€Unicodeç ç‚¹
 
 ---
 
-## 18. ´øĞŞÊÎ·û×Ö·û»Øµ÷£¨ÒÑ·ÏÆú£©
+## 18. å¸¦ä¿®é¥°ç¬¦å­—ç¬¦å›è°ƒï¼ˆå·²åºŸå¼ƒï¼‰
 ```c
 typedef void (* GLFWcharmodsfun)(GLFWwindow* window, unsigned int codepoint, int mods);
 ```
-**ÓÃÍ¾**: Unicode×Ö·ûÊäÈëÊ±µ÷ÓÃ(°üº¬ĞŞÊÎ¼üĞÅÏ¢)  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢UnicodeÂëµã¡¢ĞŞÊÎ¼ü  
-**×¢Òâ**: ¼Æ»®ÔÚ4.0°æ±¾ÒÆ³ı
+**ç”¨é€”**: Unicodeå­—ç¬¦è¾“å…¥æ—¶è°ƒç”¨(åŒ…å«ä¿®é¥°é”®ä¿¡æ¯)  
+**å‚æ•°**: çª—å£å¥æŸ„ã€Unicodeç ç‚¹ã€ä¿®é¥°é”®  
+**æ³¨æ„**: è®¡åˆ’åœ¨4.0ç‰ˆæœ¬ç§»é™¤
 
 ---
 
-## 19. Â·¾¶ÍÏ·Å»Øµ÷
+## 19. è·¯å¾„æ‹–æ”¾å›è°ƒ
 ```c
 typedef void (* GLFWdropfun)(GLFWwindow* window, int path_count, const char* paths[]);
 ```
-**ÓÃÍ¾**: ÎÄ¼ş/Ä¿Â¼ÍÏ·Åµ½´°¿ÚÊ±µ÷ÓÃ  
-**²ÎÊı**: ´°¿Ú¾ä±ú¡¢Â·¾¶ÊıÁ¿¡¢Â·¾¶Êı×é
+**ç”¨é€”**: æ–‡ä»¶/ç›®å½•æ‹–æ”¾åˆ°çª—å£æ—¶è°ƒç”¨  
+**å‚æ•°**: çª—å£å¥æŸ„ã€è·¯å¾„æ•°é‡ã€è·¯å¾„æ•°ç»„
 
 ---
 
-## 20. Ò¡¸ËÅäÖÃ»Øµ÷
+## 20. æ‘‡æ†é…ç½®å›è°ƒ
 ```c
 typedef void (* GLFWjoystickfun)(int jid, int event);
 ```
-**ÓÃÍ¾**: Ò¡¸ËÁ¬½Ó/¶Ï¿ªÊ±µ÷ÓÃ  
-**²ÎÊı**: Ò¡¸ËID¡¢ÊÂ¼şÀàĞÍ(CONNECTED/DISCONNECTED)
+**ç”¨é€”**: æ‘‡æ†è¿æ¥/æ–­å¼€æ—¶è°ƒç”¨  
+**å‚æ•°**: æ‘‡æ†IDã€äº‹ä»¶ç±»å‹(CONNECTED/DISCONNECTED)
 
 ---
 
-## ÄÚ´æ·ÖÅä»Øµ÷£¨¸ß¼¶ÓÃÍ¾£©
+## å†…å­˜åˆ†é…å›è°ƒï¼ˆé«˜çº§ç”¨é€”ï¼‰
 
-### ·ÖÅä»Øµ÷
+### åˆ†é…å›è°ƒ
 ```c
 typedef void* (* GLFWallocatefun)(size_t size, void* user);
 ```
-**ÓÃÍ¾**: GLFWĞèÒª·ÖÅäÄÚ´æÊ±µ÷ÓÃ  
-**²ÎÊı**: ËùĞè×Ö½ÚÊı¡¢ÓÃ»§Ö¸Õë  
-**·µ»Ø**: ·ÖÅäµÄÄÚ´æµØÖ·
+**ç”¨é€”**: GLFWéœ€è¦åˆ†é…å†…å­˜æ—¶è°ƒç”¨  
+**å‚æ•°**: æ‰€éœ€å­—èŠ‚æ•°ã€ç”¨æˆ·æŒ‡é’ˆ  
+**è¿”å›**: åˆ†é…çš„å†…å­˜åœ°å€
 
-### ÖØĞÂ·ÖÅä»Øµ÷
+### é‡æ–°åˆ†é…å›è°ƒ
 ```c
 typedef void* (* GLFWreallocatefun)(void* block, size_t size, void* user);
 ```
-**ÓÃÍ¾**: GLFWĞèÒªÖØĞÂ·ÖÅäÄÚ´æÊ±µ÷ÓÃ  
-**²ÎÊı**: Ô­ÄÚ´æ¿é¡¢ĞÂ´óĞ¡¡¢ÓÃ»§Ö¸Õë  
-**·µ»Ø**: ĞÂÄÚ´æ¿éµØÖ·
+**ç”¨é€”**: GLFWéœ€è¦é‡æ–°åˆ†é…å†…å­˜æ—¶è°ƒç”¨  
+**å‚æ•°**: åŸå†…å­˜å—ã€æ–°å¤§å°ã€ç”¨æˆ·æŒ‡é’ˆ  
+**è¿”å›**: æ–°å†…å­˜å—åœ°å€
 
-### ÊÍ·Å»Øµ÷
+### é‡Šæ”¾å›è°ƒ
 ```c
 typedef void (* GLFWdeallocatefun)(void* block, void* user);
 ```
-**ÓÃÍ¾**: GLFWĞèÒªÊÍ·ÅÄÚ´æÊ±µ÷ÓÃ  
-**²ÎÊı**: ÒªÊÍ·ÅµÄÄÚ´æ¿é¡¢ÓÃ»§Ö¸Õë
+**ç”¨é€”**: GLFWéœ€è¦é‡Šæ”¾å†…å­˜æ—¶è°ƒç”¨  
+**å‚æ•°**: è¦é‡Šæ”¾çš„å†…å­˜å—ã€ç”¨æˆ·æŒ‡é’ˆ
 
 ---
 
-## »Øµ÷Ê¹ÓÃÒªµã
+## å›è°ƒä½¿ç”¨è¦ç‚¹
 
-1. **Ïß³Ì°²È«**: ´ó²¿·Ö»Øµ÷ÔÚÖ÷Ïß³Ìµ÷ÓÃ£¬´íÎó»Øµ÷¿ÉÄÜÔÚÈÎÒâÏß³Ìµ÷ÓÃ
-2. **ÉúÃüÖÜÆÚ**: »Øµ÷ÔÚÉèÖÃºóÒ»Ö±ÓĞĞ§£¬Ö±µ½±»Ìæ»»»ò¿âÖÕÖ¹
-3. **·µ»ØÖµ**: ÉèÖÃ»Øµ÷º¯Êı»á·µ»ØÖ®Ç°ÉèÖÃµÄ»Øµ÷£¨ÈçÓĞ£©
-4. **ÒÆ³ı»Øµ÷**: ´«Èë`NULL`¿ÉÒÆ³ıµ±Ç°»Øµ÷
-5. **Í¬²½ÊÂ¼ş**: ´°¿ÚºÍÊäÈë»Øµ÷ÔÚÊÂ¼ş´¦Àíº¯Êıµ÷ÓÃÆÚ¼ä´¥·¢
-6. **Êı¾İÓĞĞ§ĞÔ**: »Øµ÷ÖĞµÄÖ¸Õë²ÎÊı½öÔÚ»Øµ÷·µ»ØÇ°ÓĞĞ§
+1. **çº¿ç¨‹å®‰å…¨**: å¤§éƒ¨åˆ†å›è°ƒåœ¨ä¸»çº¿ç¨‹è°ƒç”¨ï¼Œé”™è¯¯å›è°ƒå¯èƒ½åœ¨ä»»æ„çº¿ç¨‹è°ƒç”¨
+2. **ç”Ÿå‘½å‘¨æœŸ**: å›è°ƒåœ¨è®¾ç½®åä¸€ç›´æœ‰æ•ˆï¼Œç›´åˆ°è¢«æ›¿æ¢æˆ–åº“ç»ˆæ­¢
+3. **è¿”å›å€¼**: è®¾ç½®å›è°ƒå‡½æ•°ä¼šè¿”å›ä¹‹å‰è®¾ç½®çš„å›è°ƒï¼ˆå¦‚æœ‰ï¼‰
+4. **ç§»é™¤å›è°ƒ**: ä¼ å…¥`NULL`å¯ç§»é™¤å½“å‰å›è°ƒ
+5. **åŒæ­¥äº‹ä»¶**: çª—å£å’Œè¾“å…¥å›è°ƒåœ¨äº‹ä»¶å¤„ç†å‡½æ•°è°ƒç”¨æœŸé—´è§¦å‘
+6. **æ•°æ®æœ‰æ•ˆæ€§**: å›è°ƒä¸­çš„æŒ‡é’ˆå‚æ•°ä»…åœ¨å›è°ƒè¿”å›å‰æœ‰æ•ˆ
