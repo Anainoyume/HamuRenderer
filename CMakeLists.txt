@@ -1,68 +1,63 @@
 cmake_minimum_required(VERSION 3.20)
 
+
 project(HamuRenderer)
 
+
+# 项目属性设置
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin) # 设置运行时输出目录（.dll 文件）
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib) # 设置库文件输出目录（.lib 导入库）
 
-# 设置一些路径
-set(STB_IMAGE_SRC "include/stb_image/stb_image.cpp")
-set(IMGUI_SRC 
-    "include/imgui/imgui.cpp"
-    "include/imgui/imgui_draw.cpp"
-    "include/imgui/imgui_widgets.cpp"
-    "include/imgui/imgui_tables.cpp"
-    "include/imgui/imgui_demo.cpp"
 
-    # "include/imgui/backends/imgui_impl_vulkan.cpp"
-    "include/imgui/backends/imgui_impl_opengl3.cpp"
+# 添加子目录库: 导入维护第三方库的 CMakeLists.txt
+add_subdirectory(third_party)
 
-    "include/imgui/backends/imgui_impl_glfw.cpp"
-)
-set(PROJECT_SRC
-    "src/main.cpp"
-)
-set(LIB_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib") 
-set(GLAD_SRC "${CMAKE_CURRENT_SOURCE_DIR}/include/glad/glad.cpp")
 
-# 查找 Vulkan SDK (依赖系统的 VULKAN_SDK 环境变量)
-# find_package(Vulkan REQUIRED)
 
-add_executable(RendererApp
-    ${PROJECT_SRC}
-    ${STB_IMAGE_SRC}
-    ${IMGUI_SRC}
-    ${GLAD_SRC}
+# ------------------------------- 引擎项目, 抽离出动态库 ---------------------------------
+add_library(hamu_engine SHARED
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/test.cpp
 )
 
-# 添加头文件和库路径
-target_include_directories(RendererApp PRIVATE
-    "include"
-    "include/imgui"
-    "src"
+target_include_directories(hamu_engine PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-target_link_directories(RendererApp PRIVATE 
-    "lib"
-    "lib/glfw"
-)
-
-# 连接库
-target_link_libraries(RendererApp PRIVATE
+target_link_libraries(hamu_engine PRIVATE
     winpthread
-    
-    # Vulkan::Vulkan
     opengl32
     
-    glfw3
-) 
-
-# 我们改了 imgui 的源码, 加载器换成了我们自己的
-target_compile_definitions(RendererApp PRIVATE
-    IMGUI_IMPL_OPENGL_LOADER_CUSTOM
+    entt
+    glad
+    glfw
+    glm
+    imgui
+    spdlog
+    stb_image
 )
 
-# 预编译头
-target_precompile_headers(RendererApp PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/include/pch.h"
+target_compile_definitions(hamu_engine PRIVATE
+    IMGUI_IMPL_OPENGL_LOADER_CUSTOM
+    HAMU_ENGINE_BUILD
+)
+
+# target_precompile_headers(hamu_engine PRIVATE
+#     "${CMAKE_CURRENT_SOURCE_DIR}/include/pch.h"
+# )
+
+
+
+# -------------------------------- 沙盒项目, 用于测试 ----------------------------------
+add_executable(sandbox
+    ${CMAKE_CURRENT_SOURCE_DIR}/sandbox/main.cpp
+)
+
+target_include_directories(sandbox PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+target_link_libraries(sandbox PRIVATE 
+    hamu_engine
 )
